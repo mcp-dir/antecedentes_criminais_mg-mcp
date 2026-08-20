@@ -1,0 +1,33 @@
+# Smithery configuration for Antecedentes Criminais: MG
+# Schema: https://smithery.ai/docs/build/project-config
+# Remote HTTP MCP — server hosted at https://api.mcp.ai/p_antecedentes_criminais_mg
+
+name: antecedentes_criminais_mg-mcp
+displayName: "Antecedentes Criminais: MG"
+description: >
+  Antecedentes Criminais: MG, consulta em fonte oficial. Hospedado pela plataforma, sem credenciais da plataforma, pague por consulta com crédito pré-pago.
+
+version: 0.1.0
+license: MIT
+homepage: https://github.com/mcp-dir/antecedentes_criminais_mg-mcp
+repository: https://github.com/mcp-dir/antecedentes_criminais_mg-mcp
+
+tags:
+  - antecedentes_criminais_mg
+  - brazil
+  - horizontal
+  - read-only
+
+# Remote HTTP MCP — sem startCommand local (servidor já hospedado)
+startCommand:
+  type: http
+  url: https://api.mcp.ai/p_antecedentes_criminais_mg
+
+auth:
+  type: oauth2
+  resourceMetadataUrl: https://api.mcp.ai/p_antecedentes_criminais_mg/.well-known/oauth-protected-resource
+  fallback:
+    type: agent-auth
+    description: >
+      Para clientes sem OAuth 2.1. O agente expõe uma tool authenticate(token).
+      Usuário gera o JWT em https://app.mcp.ai/agent-auth e cola no chat.
